@@ -1,0 +1,62 @@
+------------------renderしない関数＆クラスの使い方(コピペで使える！)------------------------------
+※returnの後に値書けば、その値を返り値にできる。
+
+●関数の呼び出し(オブジェクトを渡す)
+  //呼び出される方
+    function callTest(props){
+      console.log(props.name)
+      return [～～]
+    }
+  //呼び出す方
+    callTest({name:'testName',content:'testContent'})
+
+●クラスの呼び出し
+  //呼び出される方
+    class callTest extends Component{
+      constructor(props){
+        super(props)
+      }
+      callfunc = (props) => {
+        console.log(props.name)
+        return [～～]
+      }
+    }
+  //呼び出す方
+    const callInstance = new callTest()  //←()内に値入れるとクラス内ではthis.propsとして使える
+    callInstance.callfunc({name:'testName',content:'testContent'})
+----------------------------------------------------------------------------------------------
+
+--------------------renderする関数＆クラスの使い方---------------------------------------------
+※renderする関数orクラス名は大文字で始める！
+※renderする関数orクラスのpropsにオブジェクトは渡せない⇒一つずつpropsを定義する。
+
+●関数の呼び出し
+  //呼び出される方
+    function CallTest(props){
+      return(<View>
+        <Text>{props.name}</Text>
+      </View>)
+    }
+  //呼び出す方
+    <CallTest name='testName' content='testContent' />
+
+●クラスの呼び出し　※propsにオブジェクトを渡すには事前にnewが必要
+  //呼び出される方
+    class CallTest extends Component{
+      constructor(props){
+        super(props)
+      }
+      render(){
+        return(<View>
+          <Text>{this.props.name}</Text>
+        </View)
+      }
+    }
+  //呼び出す方
+    <CallTest name='testName' content='testContent' />
+-----------------------------------------------------------
+
+-------react-native-storage------------------------------
+key:テーブル名のようなもの
+id:レコードのid
+---------------------------------------------------------
