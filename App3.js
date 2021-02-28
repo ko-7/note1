@@ -1,4 +1,5 @@
 //react-native-storageでロードした内容をカラム内容で分岐さることができた！
+//ただ、どうしてもreact-native-storageをうまく扱えなかったため使用をあきらめた。
 
 import React, { Component } from 'react';
 import Storage from 'react-native-storage';

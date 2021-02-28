@@ -1,43 +1,50 @@
 import React, { Component } from 'react';
-import {
-  SafeAreaView,
-  FlatList,
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native';
-import { Icon } from 'react-native-elements'
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Button } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default class Home extends Component{
+
+export default class DirView extends Component {
   constructor(props){
-    super(props);
+    super(props)
     this.state = {
-      status: "Home",
-    };
+      allKeys: [],          //全てのkeyを管理する変数
+      allData: [],          //全データを管理する配列
+      key: '',              //各データのkey
+      nameOrContent: '',    //「ディレクトリの名前」か「ファイルの内容」を格納
+      D_or_F: '',           //ディレクトリ(D)かファイル(F)か
+      belong: '',           //どのディレクトリに内にあるか。所属する親ディレクトリのkeyを入れる
+      displayOrder: '',     //ディレクトリ開いた時の表示順序
+      test: '',
+    } 
   }
+
+
+  
+
   render(){
-    const { navigation, memoData } = this.props
-    const status = this.state.status
+    const { navigation} = this.props
     return(
       <SafeAreaView style={styles.container}>
+        <Text>{this.state.allData}</Text>
         <FlatList
-          data={memoData}
+          data={this.state.allData}
           renderItem={({ item }) => {
-            let dirOrFile
-            item.dirOrFile === 'd' ? dirOrFile = 'folder' : dirOrFile = 'file';
-            return(
-              <View style={styles.listItem}>
-                <Icon name={dirOrFile} style={styles.icon} size={28} />
-                <Text style={styles.text}>{item.dirNameOrFileContent}</Text>
-              </View>
-            );
+            let D_or_F
+            item.D_or_F === 'd' ? D_or_F = 'folder' : D_or_F = 'file';
+
+            return(<View style={styles.listItem}>
+                {/* <Icon name={D_or_F} style={styles.icon} size={28} /> */}
+                <Text style={styles.text}>{item}</Text>
+            </View>);
           }}
         />
+          <Button onPress={this.createData} />
       </SafeAreaView>
     );
   }
 }
 
+//-----------------------------------------------------------------------------------------
 const styles = StyleSheet.create({
   container: {
     flex: 1,

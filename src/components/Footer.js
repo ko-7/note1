@@ -5,7 +5,7 @@ import {
   View,
   Text,
   StyleSheet,
-  Button
+  Button,
 } from 'react-native';
 
 export default class Home extends Component {

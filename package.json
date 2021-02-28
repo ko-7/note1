@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@mdi/font": "^5.8.55",
+    "@react-native-async-storage/async-storage": "^1.13.3",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^5.8.10",
@@ -25,7 +26,8 @@
     "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
     "react-native-storage": "^1.0.1",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"

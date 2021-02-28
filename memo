@@ -56,7 +56,33 @@
     <CallTest name='testName' content='testContent' />
 -----------------------------------------------------------
 
+----TextInputの使い方-----------------------------------
+export default class InputTest extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      name: '',
+    }
+  }
+  render(){
+    return(<View>  //↓onChangeTextに関数を設定！その関数にvalueを渡している
+      <TextInput onChangeText={(value)=>{this.setState({name: value})}}>
+      <Text>{this.state.name}</Text>
+    </View>)
+  }
+}
+
+※renderより上で関数を定義しておいてonChangeTextでその関数を実行することもできる
+関数
+setName = (value) => {
+  this.setState({'name': value});
+  console.log('complete')
+}
+呼び出し
+<TextInput onChangeText={(value)=>{this.setName}} />
 -------react-native-storage------------------------------
 key:テーブル名のようなもの
 id:レコードのid
+---------------------------------------------------------
+-------AsyncStorage--------------------------------------
 ---------------------------------------------------------
